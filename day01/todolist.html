@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="a">
+        <div class="b">
+            <div class="a1">
+                <img class="tu1" src="./图666.png" alt="">
+            </div>
+            <div class="a2">To-Do List</div>
+        </div>
+        <div class="a3">~Today l need to~</div>
+        <div class="a4">
+            <input class="a5" type="text">
+            <button class="btn">submit</button>
+        </div>
+        <div class="box">
+            <ul></ul>
+            <h3>选中&emsp;<span class="js">0</span></h3>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    //获取元素
+    var box=document.querySelector('.box')
+    var aa=document.querySelector(".a5")
+    var bb=document.querySelector(".btn")
+    var ul=document.querySelector('ul')
+    var btn=document.querySelector('.btn')
+    var js=document.querySelector('.js')
+
+    //输入框自动获取焦点
+    aa.focus()
+    
+    //判断输入框内容为空时  不能添加，提示
+    aa.onkeyup=function(e){
+        //按下enter键
+        if(e.keyCode==13){
+            //去掉空格，不能为空提示
+            if(aa.value.trim()==""){
+                alert('内容不能为空')
+            }else{
+                //输入框内容添加成功,创建标签
+                var li=document.createElement('li');
+                li.innerHTML=`
+                <input type="checkbox" class="fx">
+                ${aa.value}
+                <a href="#" class="del">删除</a>
+                `
+                //写入内容
+                ul.appendChild(li)
+                //计数
+                js.innerHTML=ul.children.length
+                //清空输入框的值
+                aa.value=''
+            }
+        }
+    }
+
+    //点击按钮添加
+    btn.onclick=function(){
+        //去掉空格，不能为空提示
+        if(aa.value.trim()==""){
+            alert('内容不能为空')
+        }else{
+            //输入框内容添加成功,创建标签
+            var li=document.createElement('li');
+            li.innerHTML=`
+            <input type="checkbox" class="fx">
+            ${aa.value}
+            <a href="#" class="del">删除</a>
+            `
+            //写入内容
+            ul.appendChild(li)
+            //计数
+            js.innerHTML=ul.children.length
+            //清空输入框的值
+            aa.value=''
+        }
+    }
+
+    //删除事件委托
+    box.addEventListener('click',function(e){
+        if(e.target.className=='del'){
+            //删除
+            e.target.parentNode.parentNode.removeChild(e.target.parentNode)
+            //计数
+            js.innerHTML=ul.children.length
+        }
+    })
+</script>
+<style>
+    body{
+        background-color: pink;
+    }
+    .a{
+        width: 400px;
+        height: 500px;
+        background-color: white;
+        margin: auto;
+        margin-top: 100px;
+        border-radius: 10%;
+    }
+    .a1{
+        width: 80px;
+        height: 120px;
+        float: left;
+    }
+    .tu1{
+        width: 100%;
+        height: 100%;
+    }
+    .a2{
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        background-color: orange;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+    .b{
+        width: 100%;
+        height: 120px;
+        float: left;
+        margin-left: 100px;
+    }
+    .a3{
+        text-align: center;
+        font-weight: 900;
+    }
+    .a4{
+        margin-left: 100px;
+        margin-top: 30px;
+    }
+    ul{
+        margin: 0 55px;
+        list-style: none;
+    }
+    .del{
+        float: right;
+    }
+    h3{
+        margin-left: 100px;
+    }
+</style>
