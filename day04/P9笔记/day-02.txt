@@ -1,0 +1,55 @@
+枚举看成块级
+
+1.数字枚举 ：在定义值的时候可以用计算值和常量 如果一个值使用了计算值和常量，那么就要给每一个进行赋值
+  语法： enum Status {
+    		      One = 1,
+   		      Two,
+   		      Three,
+		}
+	console.log(Status.One);
+	console.log(Status['Two']);
+
+2.字符串枚举：在定义值的时候都是字符串，并且不能使用计算值和常量
+
+3.反向映射：定义一个枚举值的时候，可以用Enum['key']或者Enum.key的方法获取到volue值
+                    只能是数字枚举可以使用，字符枚举不能使用
+enum Status {
+    		   Success = 200,
+    		   NotFound = 404,
+    		   Error = 500
+		}
+		console.log(Status.Success);
+		console.log(Status[404]);
+
+4.枚举成员类型：把符合条件的成员作为枚举值来进行使用
+语法： enum Animal{
+    		Dog = 1,
+    		Cat = 2
+	          }
+
+	       interface Dog{
+    	      type: Animal.Dog
+	}
+
+	     interface Cat{
+    	    type: Animal.Cat
+	}
+
+	let dog: Dog = {
+    	   type: Animal.Dog
+	}
+
+5.联合成员类型：当枚举值符合条件的时候，这个成员可以看做是包含所有成员的联合类型
+
+6.异构枚举：枚举值的类型中既用字符串又有数值
+定义：  和元组类似可以有数字也可以有字符串
+	语法： enum Resul {
+    		Success = 200,
+    		Error = '报错'
+	        }
+
+7.运行时的枚举：枚举在编译后的值实际是一个对象
+
+8.const enum：定义枚举值之后编译成javascipt的代码会创建一个对应的对象
+
+
