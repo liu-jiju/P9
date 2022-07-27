@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./TodoList.css">
+</head>
+<body>
+    <div class="box">
+        <div class="a">
+            <img src="./图666.png" alt="">
+            <div class="a1">To-Do List</div>
+        </div>
+        <div class="b">~ Today I need to ~</div>
+        <div class="c">
+            <input class="txt" type="text" id="inputValue" autofocus="autofocus" placeholder="Add new todo..." onkeydown="addTodoItem(event)">
+            <button class="btn" onclick="addTodoItem()">Submit</button>
+        </div>
+        <ul>
+            <!-- <li>
+                <input type="checkbox" class="fx">
+				<p>lalala</p>
+				<a href="JavaScript:;">X</a>
+            </li> -->
+        </ul>
+        <footer>
+            <div id="item-current" class="button">无事项</div>
+            <!-- <button class="button-active">查看所有</button> -->
+            <button onclick="viewAllInfo()" class="button clickButton" id="allinfo">查看所有</button>
+            <button onclick="toBeCompleted()" class="button" id="completed_todo">待完成</button>
+            <button onclick="completed()" class="button" id="completed_order">已完成</button>
+            <button onclick="clearAll()" class="button" id="clear_completed">清空所有</button>
+            <!-- 尾部,有总条数,已完成,待完成,清空,查看全部等功能 -->
+          </footer>
+    </div>
+</body>
+<script src="./TodoList.js"></script>
+</html>
